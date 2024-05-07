@@ -7,6 +7,7 @@ const PRODUCT_ID = 42152;
 
 
 // Get the list of connected USB devices
+
 // const devicesUSB = usb.getDeviceList();
 
 // console.log("Connected USB devices:");
@@ -22,7 +23,8 @@ const PRODUCT_ID = 42152;
 //   );
 // });
 
-// Find the scanner device
+// // Find the scanner device
+
 const devices = HID.devices();
 const scanner = devices.find(
   (device) => device.vendorId === VENDOR_ID && device.productId === PRODUCT_ID
@@ -41,6 +43,22 @@ if (scanner) {
     // Process the scanned data as needed
   });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
   // Handle device errors
   device.on("error", (error) => {
     console.error("Scanner error:", error);
