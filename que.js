@@ -4,8 +4,8 @@ const HID = require("node-hid");
 // const VENDOR_ID = 1317;
 // const PRODUCT_ID = 42152;
 
-const VENDOR_ID = 2522;
-const PRODUCT_ID = 34614;
+const VENDOR_ID = 10473;
+const PRODUCT_ID = 22546;
 
 // Get the list of connected USB devices
 
