@@ -1,27 +1,29 @@
-
 const usb = require("usb");
-const HID = require('node-hid');
+const HID = require("node-hid");
 // Replace with your scanner's VID and PID
-const VENDOR_ID = 1317;
-const PRODUCT_ID = 42152;
+// const VENDOR_ID = 1317;
+// const PRODUCT_ID = 42152;
 
+const VENDOR_ID = 2522;
+const PRODUCT_ID = 34614;
 
 // Get the list of connected USB devices
 
-// const devicesUSB = usb.getDeviceList();
+const devicesUSB = usb.getDeviceList();
 
-// console.log("Connected USB devices:");
+console.log("Connected USB devices:");
 
-// devicesUSB.forEach((device) => {
-//   console.log("Manufacturer:", device.deviceDescriptor.iManufacturer);
-//   console.log("Product:", device.deviceDescriptor.iProduct);
-//   console.log("Serial Number:", device.deviceDescriptor.iSerialNumber);
-//   console.log("Vendor ID:", device.deviceDescriptor.idVendor);
-//   console.log("Product ID:", device.deviceDescriptor.idProduct);
-//   console.log(
-//     "----------------------------------------------------------------"
-//   );
-// });
+devicesUSB.forEach((device) => {
+  console.log("Manufacturer:", device.deviceDescriptor.iManufacturer);
+  console.log("Product:", device.deviceDescriptor.bcdUSB);
+  console.log("Serial Number:", device.deviceDescriptor.iSerialNumber);
+  console.log("Vendor ID:", device.deviceDescriptor.idVendor);
+  console.log("Product ID:", device.deviceDescriptor.idProduct);
+  // console.log("Address:", device.allConfigDescriptors);
+  console.log(
+    "----------------------------------------------------------------"
+  );
+});
 
 // // Find the scanner device
 
@@ -36,30 +38,13 @@ if (scanner) {
   // Create a new HID device instance
   const device = new HID.HID(scanner.path);
 
-  // Listen for data events
+  // Ma'lumotni qabul qilish
   device.on("data", (data) => {
-    const scannedData = data.toString("utf8");
-    console.log("Scanned data:", scannedData);
-    // Process the scanned data as needed
+    console.log("Received data:", data);
+    // Ma'lumotni kerakli formatga o'tkazish va qo'llash mumkin
   });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  // Handle device errors
+  // Xatoliklarni qo'llash
   device.on("error", (error) => {
     console.error("Scanner error:", error);
   });
